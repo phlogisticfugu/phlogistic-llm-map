@@ -18,38 +18,107 @@ const marginBottom = 30;
 const marginLeft = 40;
 
 const data = await d3.csv("models.csv");
-const root = d3.stratify(data)
+const stratify = d3.stratify()
     .id((d) => d.name)
-    .parentId((d) => d.parent_name)
+    .parentId((d) => d.predecessor_name);
+const root = stratify(data);
 
-// Declare the x (horizontal position) scale.
-const x = d3.scaleUtc()
-    .domain([new Date("2017-06-12"), new Date("2024-01-01")])
-    .range([marginLeft, width - marginRight]);
+const nodes = root.descendants();
+const links = root.links();
 
-// Declare the y (vertical position) scale.
-const y = d3.scaleLinear()
-    .domain([0, 100])
-    .range([height - marginBottom, marginTop]);
+console.log("debug", { nodes, links});
+
+const simulation = d3.forceSimulation(nodes)
+    .force("link", d3.forceLink(links).id((d) => d.name).distance(0).strength(1))
+    .force("charge", d3.forceManyBody().strength(-100))
+    .force("x", d3.forceX())
+    .force("y", d3.forceY());
+
+simulation.nodes(nodes);
+simulation.force("link").links(links);
 
 // Create the SVG container.
 const svg = d3.create("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .attr("viewBox", [-width / 2, -height / 2, width, height])
+    .attr("style", "max-width: 100%; height: auto;");
+
+// Append links.
+const link = svg.append("g")
+    .attr("stroke", "#999")
+    .attr("stroke-opacity", 0.6)
+    .selectAll("line")
+    .data(links)
+    .join("line");
+
+// define drag handler
+function drag(simulation) {
+    function dragstarted(event, d) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+    }
+
+    function dragged(event, d) {
+        d.fx = event.x;
+        d.fy = event.y;
+    }
+
+    function dragended(event, d) {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+    }
+
+    return d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended);
+}
+
+ // Append nodes.
+ const node = svg.append("g")
+    .attr("fill", "#fff")
+    .attr("stroke", "#000")
+    .attr("stroke-width", 1.5)
+    .selectAll("circle")
+    .data(nodes)
+    .join("circle")
+    .attr("fill", "#000")
+    .attr("r", 3.5)
+    .call(drag(simulation));
+
+node.append("title")
+    .text(d => d.data.name);
+
+simulation.on("tick", () => {
+    link
+        .attr("x1", d => d.source.x)
+        .attr("y1", d => d.source.y)
+        .attr("x2", d => d.target.x)
+        .attr("y2", d => d.target.y);
+
+    node
+        .attr("cx", d => d.x)
+        .attr("cy", d => d.y);
+});
+
+//invalidation.then(() => simulation.stop());
+
+// Declare the x (horizontal position) scale.
+const scale_x = d3.scaleUtc()
+    .domain([new Date("2017-06-12"), new Date("2024-01-01")])
+    .range([marginLeft, width - marginRight]);
 
 // Add the x-axis.
 svg.append("g")
     .attr("transform", `translate(0,${height - marginBottom})`)
-    .call(d3.axisBottom(x));
-
-// Add the y-axis.
-svg.append("g")
-    .attr("transform", `translate(${marginLeft},0)`)
-    .call(d3.axisLeft(y));
+    .call(d3.axisBottom(scale_x));
 
 // Append the SVG element.
-container.append(svg.node());
-
+d3.select("#container")
+    .append(() => svg.node());
 </script>
     </body>
 </html>
