@@ -2,12 +2,25 @@
 <html lang="en">
     <head>
         <title>Phlogistic LLM Map</title>
+        <style type="text/css">
+            .node {
+                cursor: pointer;
+            }
+            .tooltip {
+                background-color: #f9f9f9;
+                border: 1px solid #ccc;
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                font-size: 12px;
+            }
+        </style>
     </head>
     <body>
         <div id="container"></div>
 <script type="module">
-
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+const container = d3.select("#container");
 
 // Declare the chart dimensions and margins.
 const width = Math.min(1280, window.innerWidth - 40);
@@ -88,6 +101,7 @@ function drag(simulation) {
 
  // Append nodes.
  const node = svg.append("g")
+    .attr("class", "node")
     .attr("fill", "#fff")
     .attr("stroke", "#000")
     .attr("stroke-width", 1.5)
@@ -95,11 +109,10 @@ function drag(simulation) {
     .data(nodes)
     .join("circle")
     .attr("fill", "#000")
-    .attr("r", 3.5)
+    .attr("r", 5)
+    .on("mouseover", handleMouseOver)
+    .on("mouseout", handleMouseOut)
     .call(drag(simulation));
-
-node.append("title")
-    .text(d => d.data.name);
 
 // Add the x-axis.
 svg.append("g")
@@ -118,9 +131,30 @@ simulation.on("tick", () => {
         .attr("cy", d => d.y);
 });
 
-// Append the SVG element.
-d3.select("#container")
+// Function to handle mouseover event
+function handleMouseOver(event, d) {
+  // Append a custom tooltip with rich content
+  const tooltip = d3.select("body")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("position", "absolute")
+    .style("pointer-events", "none")
+    .style("left", event.pageX + 10 + "px") // Position the tooltip relative to the mouse
+    .style("top", event.pageY + 10 + "px");
+
+  // Add rich content to the tooltip
+  tooltip.html(`<h3>${d.data.name}</h3><p>${d.data.publish_date}</p>`);
+}
+
+// Function to handle mouseout event
+function handleMouseOut() {
+  // Remove the custom tooltip when the mouse moves out of the node
+  d3.select(".tooltip").remove();
+}
+
+container
     .append(() => svg.node());
+
 </script>
     </body>
 </html>
