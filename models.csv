@@ -1,0 +1,5 @@
+"name","publish_date","publisher","predecessor_name"
+"GPT-1","2018-11-21","OpenAI",""
+"GPT-2","2019-02-14","OpenAI","GPT-1"
+"GPT-3","2020-06-11","OpenAI","GPT-2"
+"GPT-3.5","2022-03-15","OpenAI","GPT-3"

@@ -10,12 +10,17 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 // Declare the chart dimensions and margins.
-const width = 1280;
-const height = 800;
+const width = Math.min(1280, window.innerWidth - 40);
+const height = Math.min(800, window.innerHeight - 40);
 const marginTop = 20;
 const marginRight = 20;
 const marginBottom = 30;
 const marginLeft = 40;
+
+const data = await d3.csv("models.csv");
+const root = d3.stratify(data)
+    .id((d) => d.name)
+    .parentId((d) => d.parent_name)
 
 // Declare the x (horizontal position) scale.
 const x = d3.scaleUtc()
