@@ -39,9 +39,9 @@ const scale_x = d3.scaleUtc()
     .range([marginLeft, width - marginRight]);
 
 const simulation = d3.forceSimulation(nodes)
-    .force("link", d3.forceLink(links).id((d) => d.name).distance(0).strength(1))
+    .force("link", d3.forceLink(links).id((d) => d.name).distance(0))
     .force("charge", d3.forceManyBody().strength(-100))
-    .force("x", d3.forceX(d => scale_x(d.data.publish_date_obj)))
+    .force("x", d3.forceX(d => scale_x(d.data.publish_date_obj)).strength(3))
     .force("y", d3.forceY(height / 2));
 
 simulation.nodes(nodes);
