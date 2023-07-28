@@ -46,7 +46,7 @@ const simulation = d3.forceSimulation(nodes)
     .force("charge", d3.forceManyBody().strength(-300))
     .force("collide", d3.forceCollide().radius(24).strength(3))
     .force("x", d3.forceX(d => scale_x(d.data.publish_date_obj)).strength(3))
-    .force("y", d3.forceY(height / 2));
+    .force("y", d3.forceY(height / 2).strength(d => d.depth > 1 ? 0.1 : 1));
 
 // Create the SVG container.
 const svg = d3.create("svg")
