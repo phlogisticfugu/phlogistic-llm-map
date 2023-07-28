@@ -47,9 +47,6 @@ const simulation = d3.forceSimulation(nodes)
     .force("x", d3.forceX(d => scale_x(d.data.publish_date_obj)).strength(3))
     .force("y", d3.forceY(height / 2));
 
-simulation.nodes(nodes);
-simulation.force("link").links(links);
-
 // Create the SVG container.
 const svg = d3.create("svg")
     .attr("width", width)
