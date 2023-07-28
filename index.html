@@ -33,13 +33,16 @@ const root = stratify(appended_data);
 const nodes = root.descendants();
 const links = root.links();
 
+const root_node = nodes.find(node => !node.depth);
+root_node.fy = height / 2;
+
 // Declare the x (horizontal position) scale.
 const scale_x = d3.scaleUtc()
     .domain(d3.extent(appended_data, d => d.publish_date_obj))
     .range([marginLeft, width - marginRight]);
 
 const simulation = d3.forceSimulation(nodes)
-    .force("link", d3.forceLink(links).id((d) => d.name).distance(0))
+    .force("link", d3.forceLink(links).id((d) => d.name).distance(50))
     .force("charge", d3.forceManyBody().strength(-100))
     .force("x", d3.forceX(d => scale_x(d.data.publish_date_obj)).strength(3))
     .force("y", d3.forceY(height / 2));
@@ -65,17 +68,22 @@ const link = svg.append("g")
  // Append nodes.
  const node = svg.append("g")
     .attr("class", "node")
-    .attr("fill", "#fff")
-    .attr("stroke", "#000")
-    .attr("stroke-width", 1.5)
-    .selectAll("circle")
+    .selectAll("g")
     .data(nodes)
-    .join("circle")
+    .enter()
+    .append("g")
+    .call(drag(simulation));
+
+node.append("circle")
     .attr("fill", "#000")
     .attr("r", 5)
     .on("mouseover", handleMouseOver)
-    .on("mouseout", handleMouseOut)
-    .call(drag(simulation));
+    .on("mouseout", handleMouseOut);
+
+node.append("text")
+    .attr("dy", -10)
+    .attr("text-anchor", "middle")
+    .text(d => d.data.name);
 
 // Add the x-axis.
 svg.append("g")
@@ -90,8 +98,7 @@ simulation.on("tick", () => {
         .attr("y2", d => d.target.y);
 
     node
-        .attr("cx", d => d.x)
-        .attr("cy", d => d.y);
+        .attr("transform", d => `translate(${d.x},${d.y})`); // Move the entire g element to new x,y position
 });
 
 // define drag handler
