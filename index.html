@@ -42,7 +42,7 @@ const scale_x = d3.scaleUtc()
     .range([marginLeft, width - marginRight]);
 
 const simulation = d3.forceSimulation(nodes)
-    .force("link", d3.forceLink(links).id((d) => d.name).distance(50))
+    .force("link", d3.forceLink(links).id((d) => d.name).distance(30))
     .force("charge", d3.forceManyBody().strength(-100))
     .force("x", d3.forceX(d => scale_x(d.data.publish_date_obj)).strength(3))
     .force("y", d3.forceY(height / 2));
@@ -57,7 +57,6 @@ const svg = d3.create("svg")
 // Append links.
 const link = svg.append("g")
     .attr("stroke", "#999")
-    .attr("stroke-opacity", 0.6)
     .selectAll("line")
     .data(links)
     .join("line");
