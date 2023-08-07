@@ -20,6 +20,7 @@
 "GPT-2","GPT","2019-02-14","OpenAI","https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",6346
 "GPT-3","GPT-2","2020-05-28","OpenAI","https://arxiv.org/abs/2005.14165",12900
 "InstructGPT","GPT-3","2022-03-04","OpenAI","https://arxiv.org/abs/2203.02155",1630
+"Codex","GPT-3","2021-08-10","OpenAI","https://openai.com/blog/openai-codex",0
 "GPT-3.5","GPT-3","2022-03-15","OpenAI","https://openai.com/blog/gpt-3-edit-insert/",0
 "OPT","GPT-3","2022-05-02","Facebook","https://arxiv.org/abs/2205.01068",574
 "PaLM","Transformer","2022-04-05","Google","https://arxiv.org/abs/2204.02311",1263
