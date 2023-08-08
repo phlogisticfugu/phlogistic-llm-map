@@ -63,6 +63,10 @@ const scale_x = d3.scaleUtc()
 
 const publishers = Array.from(new Set(prepped_models.map(d => d.publisher)));
 const color_scale = d3.scaleOrdinal(d3.schemeTableau10).domain(publishers); 
+const publisher_css_class_map = {};
+publishers.forEach((publisher) => {
+    publisher_css_class_map[publisher] = publisher.replace(/\W+/g, "-").toLowerCase()
+});
 
 const simulation = d3.forceSimulation(nodes)
     .force("link", d3.forceLink(links).id((d) => d.name).distance(30))
@@ -104,6 +108,7 @@ node.append("a")
     .attr("xlink:href", d => d.data.publish_url)
     .attr("target", "_blank")
     .append("text")
+    .attr("class", d => `node-text ${publisher_css_class_map[d.data.publisher]}`)
     .attr("dy", -10)
     .attr("text-anchor", "middle")
     .attr("text-decoration", d => !!d.data.publish_url ? "underline" : "none")
@@ -133,8 +138,17 @@ legend.append("rect")
 legend.append("text")
     .attr("x", 24)
     .attr("y", 9)
+    .attr("class", "legend-text")
     .attr("dy", "0.35em")
-    .text(d => d);
+    .text(d => d)
+    .on("mouseover", function(_, d) {
+        svg.selectAll(`.node-text.${publisher_css_class_map[d]}`)
+            .style("font-weight", "bold");
+    })
+    .on("mouseout", function(_, d) {
+        svg.selectAll(`.node-text.${publisher_css_class_map[d]}`)
+            .style("font-weight", "normal");
+    });
 
 simulation.on("tick", () => {
     link
