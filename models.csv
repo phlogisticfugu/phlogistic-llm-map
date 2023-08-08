@@ -13,6 +13,7 @@
 "T5","BERT","2019-10-23","Google","https://arxiv.org/abs/1910.10683",9217
 "AlexaTM","BERT","2022-08-02","Amazon","https://arxiv.org/abs/2208.01448",31
 "Switch Transformer","Transformer","2021-01-11","Google","https://arxiv.org/abs/2101.03961",812
+"ST-MoE","Switch Transformer","2022-02-17","Google","https://arxiv.org/abs/2202.08906",12
 "DeBERTa","RoBERTa","2020-06-05","Microsoft","https://arxiv.org/abs/2006.03654",1172
 "BART","BERT","2019-10-29","Facebook","https://arxiv.org/abs/1910.13461",6118
 "GPT","Transformer","2018-06-11","OpenAI","https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",6152
