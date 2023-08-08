@@ -11,7 +11,7 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 const container = d3.select("#container");
 
 // Declare the chart dimensions and margins.
-const width = Math.min(1280, window.innerWidth - 40);
+const width = Math.min(1440, window.innerWidth - 40);
 const height = Math.min(800, window.innerHeight - 40);
 const marginTop = 20;
 const marginRight = 20;
@@ -38,8 +38,16 @@ const root = stratify(appended_data);
 const nodes = root.descendants();
 const links = root.links();
 
-const root_node = nodes.find(node => !node.depth);
-root_node.fy = height / 2;
+// fix positions to spread out the tree branches
+root.fy = height / 2;
+const first_children_trees = root.children
+    .filter(d => d.descendants().length > 3)
+first_children_trees.forEach((tree, i) => {
+    const height_increment = height / (first_children_trees.length + 1);
+    const target_y = (i + 1) * height_increment;
+    tree.fy = target_y;
+    tree.descendants().forEach(d => d.target_y = target_y);
+})
 
 // Declare the x (horizontal position) scale.
 const scale_x = d3.scaleUtc()
@@ -54,7 +62,7 @@ const simulation = d3.forceSimulation(nodes)
     .force("charge", d3.forceManyBody().strength(-300))
     .force("collide", d3.forceCollide().radius(24).strength(3))
     .force("x", d3.forceX(d => scale_x(d.data.publish_date_obj)).strength(3))
-    .force("y", d3.forceY(height / 2).strength(d => d.depth > 1 ? 0.07 : 0.2));
+    .force("y", d3.forceY(d => !!d.target_y ? d.target_y : height / 2).strength(0.08));
 
 // Create the SVG container.
 const svg = d3.create("svg")
