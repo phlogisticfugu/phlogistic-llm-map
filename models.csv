@@ -1,4 +1,4 @@
-"name","predecessor_name","publish_date","publisher"","publish_url","num_citations"
+"name","predecessor_name","publish_date","publisher","publish_url","num_citations"
 "Transformer","","2017-06-12","Google","https://arxiv.org/abs/1706.03762",83844
 "BERT","Transformer","2018-10-11","Google","https://arxiv.org/abs/1810.04805",74143
 "RoBERTa","BERT","2019-07-26","Facebook","https://arxiv.org/abs/1907.11692",187
