@@ -12,14 +12,14 @@ const container = d3.select("#container");
 
 // Declare the chart dimensions and margins.
 const width = Math.min(1440, window.innerWidth - 40);
-const height = Math.min(800, window.innerHeight - 40);
+const height = Math.min(1200, window.innerHeight - 40);
 const marginTop = 20;
 const marginRight = 20;
 const marginBottom = 20;
 const marginLeft = 40;
 
-const data = await d3.csv("models.csv");
-const appended_data = data
+const models = await d3.csv("models.csv");
+const prepped_models = models
     .map(d => {
         d.publish_date_obj = new Date(d.publish_date);
         if (d.num_citations > 0) {
@@ -33,7 +33,7 @@ const appended_data = data
 const stratify = d3.stratify()
     .id((d) => d.name)
     .parentId((d) => d.predecessor_name);
-const root = stratify(appended_data);
+const root = stratify(prepped_models);
 
 const nodes = root.descendants();
 const links = root.links();
@@ -51,10 +51,10 @@ first_children_trees.forEach((tree, i) => {
 
 // Declare the x (horizontal position) scale.
 const scale_x = d3.scaleUtc()
-    .domain(d3.extent(appended_data, d => d.publish_date_obj))
+    .domain(d3.extent(prepped_models, d => d.publish_date_obj))
     .range([marginLeft, width - marginRight]);
 
-const publishers = Array.from(new Set(appended_data.map(d => d.publisher)));
+const publishers = Array.from(new Set(prepped_models.map(d => d.publisher)));
 const color_scale = d3.scaleOrdinal(d3.schemeTableau10).domain(publishers); 
 
 const simulation = d3.forceSimulation(nodes)

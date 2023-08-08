@@ -45,3 +45,14 @@
 "Dolly","GPT-J","2023-03-24","Databricks","https://www.databricks.com/blog/2023/03/24/hello-dolly-democratizing-magic-chatgpt-open-models.html",10
 "Pythia","GPT-3","2023-04-03","Eleuther AI","https://arxiv.org/abs/2304.01373",46
 "Dolly 2.0","Pythia","2023-04-12","Databricks","https://www.databricks.com/blog/2023/04/12/dolly-first-open-commercially-viable-instruction-tuned-llm",0
+"mT5","T5","2020-10-22","Google","https://arxiv.org/abs/2010.11934",1100
+"T0","T5","2021-10-15","Various","https://arxiv.org/abs/2110.08207",591
+"CodeGen","GPT-J","2022-03-25","Salesforce","https://arxiv.org/abs/2203.13474",103
+"Tk-Instruct","T5","2022-04-16","Various","https://arxiv.org/abs/2204.07705",75
+"PanGu-α","Transformer","2021-04-26","PCNL","https://arxiv.org/abs/2104.12369",127
+"UL2","T5","2022-05-10","Google","https://arxiv.org/abs/2205.05131",26
+"NLLB","Transformer","2022-07-11","Facebook","https://arxiv.org/abs/2207.04672",116
+"Flan-T5","T5","2022-10-20","Google","https://arxiv.org/abs/2210.11416",359
+"BLOOMZ","BLOOM","2022-11-03","Various","https://arxiv.org/abs/2211.01786",65
+"mT0","mT5","2022-11-03","Various","https://arxiv.org/abs/2211.01786",65
+"FLAN","GPT-3","2021-09-03","Google","https://arxiv.org/abs/2109.01652",719
