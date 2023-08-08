@@ -170,6 +170,7 @@ function handleMouseOver(event, d) {
   tooltip.html(`
     <h3>${d.data.name}</h3>
     <p>${d.data.publish_date} - ${d.data.publisher}</p>
+    <p>Google Scholar Citations: ${d.data.num_citations}</p>
   `);
 }
 
