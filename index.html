@@ -47,7 +47,7 @@ const scale_x = d3.scaleUtc()
     .range([marginLeft, width - marginRight]);
 
 const publishers = Array.from(new Set(appended_data.map(d => d.publisher)));
-const colorScale = d3.scaleOrdinal(d3.schemeTableau10).domain(publishers); 
+const color_scale = d3.scaleOrdinal(d3.schemeTableau10).domain(publishers); 
 
 const simulation = d3.forceSimulation(nodes)
     .force("link", d3.forceLink(links).id((d) => d.name).distance(30))
@@ -80,7 +80,7 @@ const link = svg.append("g")
     .call(drag(simulation));
 
 node.append("circle")
-    .attr("fill", d => colorScale(d.data.publisher))
+    .attr("fill", d => color_scale(d.data.publisher))
     .attr("r", d => d.data.radius)
     .on("mouseover", handleMouseOver)
     .on("mouseout", handleMouseOut);
@@ -107,7 +107,7 @@ const legend = svg.append("g")
 legend.append("rect")
     .attr("width", 18)
     .attr("height", 18)
-    .attr("fill", colorScale);
+    .attr("fill", color_scale);
 
 legend.append("text")
     .attr("x", 24)
