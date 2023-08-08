@@ -46,7 +46,14 @@ first_children_trees.forEach((tree, i) => {
     const height_increment = height / (first_children_trees.length + 1);
     const target_y = (i + 1) * height_increment;
     tree.fy = target_y;
-    tree.descendants().forEach(d => d.target_y = target_y);
+    tree.descendants().forEach(d => {
+        if (d.data.name.toLowerCase().startsWith("bloom")) {
+            // positioning hack
+            d.target_y = height / 2
+        } else {
+            d.target_y = target_y
+        }
+    });
 })
 
 // Declare the x (horizontal position) scale.
@@ -107,7 +114,7 @@ svg.append("g")
     .attr("transform", `translate(0,${height - marginBottom})`)
     .call(d3.axisBottom(scale_x));
 
-// 3. Add a legend
+// Add a legend
 const legend = svg.append("g")
     .attr("class", "legend")
     .attr("transform", `translate(${marginLeft}, ${marginTop})`)  // Moved to upper left
