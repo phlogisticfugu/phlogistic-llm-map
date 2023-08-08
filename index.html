@@ -91,6 +91,7 @@ node.append("a")
     .append("text")
     .attr("dy", -10)
     .attr("text-anchor", "middle")
+    .attr("text-decoration", d => !!d.data.publish_url ? "underline" : "none")
     .text(d => d.data.name);
 
 // Add the x-axis.
