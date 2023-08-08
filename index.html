@@ -85,7 +85,10 @@ node.append("circle")
     .on("mouseover", handleMouseOver)
     .on("mouseout", handleMouseOut);
 
-node.append("text")
+node.append("a")
+    .attr("xlink:href", d => d.data.publish_url)
+    .attr("target", "_blank")
+    .append("text")
     .attr("dy", -10)
     .attr("text-anchor", "middle")
     .text(d => d.data.name);
