@@ -14,7 +14,7 @@ const container = d3.select("#container");
 const width = window.innerWidth - 40;
 const height = window.innerHeight - 40;
 const marginTop = 20;
-const marginRight = 20;
+const marginRight = 80;
 const marginBottom = 20;
 const marginLeft = 40;
 const textLabelOffset = 10;
@@ -256,11 +256,16 @@ function handleMouseOver(event, d) {
     .style("top", event.pageY + 10 + "px");
 
   // Add rich content to the tooltip
-  tooltip.html(`
+  let content_html = `
     <h3>${d.data.name}</h3>
     <p>${d.data.publish_date} - ${d.data.publisher}</p>
-    <p>Google Scholar Citations: ${d.data.num_citations}</p>
-  `);
+  `
+  if (d.data.num_citations > 0) {
+    content_html += `<p>Google Scholar Citations: ${d.data.num_citations}</p>`
+  } else {
+    content_html += "<p>No Preprint Paper</p>"
+  }
+  tooltip.html(content_html);
 }
 
 // Function to handle mouseout event
