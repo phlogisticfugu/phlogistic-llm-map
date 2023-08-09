@@ -17,6 +17,7 @@ const marginTop = 20;
 const marginRight = 20;
 const marginBottom = 20;
 const marginLeft = 40;
+const textLabelOffset = 10;
 
 const models = await d3.csv("models.csv");
 const prepped_models = models
@@ -41,18 +42,13 @@ const links = root.links();
 // fix positions to spread out the tree branches
 root.fy = height / 2;
 const first_children_trees = root.children
-    .filter(d => d.descendants().length > 3)
+    .filter(d => ["BERT", "GPT"].includes(d.data.name))
 first_children_trees.forEach((tree, i) => {
     const height_increment = height / (first_children_trees.length + 1);
     const target_y = (i + 1) * height_increment;
     tree.fy = target_y;
     tree.descendants().forEach(d => {
-        if (d.data.name.toLowerCase().startsWith("bloom")) {
-            // positioning hack
-            d.target_y = height / 2
-        } else {
-            d.target_y = target_y
-        }
+        d.target_y = target_y
     });
 })
 
@@ -69,11 +65,11 @@ publishers.forEach((publisher) => {
 });
 
 const simulation = d3.forceSimulation(nodes)
-    .force("link", d3.forceLink(links).id((d) => d.name).distance(30))
+    .force("link", d3.forceLink(links).id((d) => d.name).distance(30).strength(0.3))
     .force("charge", d3.forceManyBody().strength(-300))
     .force("collide", d3.forceCollide().radius(30).strength(3))
     .force("x", d3.forceX(d => scale_x(d.data.publish_date_obj)).strength(3))
-    .force("y", d3.forceY(d => !!d.target_y ? d.target_y : height / 2).strength(0.08));
+    .force("y", d3.forceY(d => !!d.target_y ? d.target_y : height / 2).strength(d => 0.3 / d.depth));
 
 // Create the SVG container.
 const svg = d3.create("svg")
@@ -109,7 +105,7 @@ node.append("a")
     .attr("target", "_blank")
     .append("text")
     .attr("class", d => `node-text ${publisher_css_class_map[d.data.publisher]}`)
-    .attr("dy", -10)
+    .attr("dy", -textLabelOffset)
     .attr("text-anchor", "middle")
     .attr("text-decoration", d => !!d.data.publish_url ? "underline" : "none")
     .text(d => d.data.name)
@@ -158,6 +154,10 @@ simulation.on("tick", () => {
         .attr("y2", d => d.target.y);
 
     node
+        .each(d => { // Add this block to constrain the nodes
+            d.x = Math.max(marginLeft + d.data.radius, Math.min(width - marginRight - d.data.radius, d.x));
+            d.y = Math.max(marginTop + textLabelOffset + d.data.radius, Math.min(height - marginBottom - d.data.radius, d.y));
+        })
         .attr("transform", d => `translate(${d.x},${d.y})`); // Move the entire g element to new x,y position
 });
 
