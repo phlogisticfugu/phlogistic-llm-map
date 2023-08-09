@@ -41,7 +41,7 @@ const links = root.links();
 const max_depth = d3.max(nodes, d => d.depth);
 
 // fix positions to spread out the tree branches
-root.fy = height / 2;
+root.fy = (height / 2) + 100;
 const first_children_trees = root.children
     .filter(d => ["BERT", "GPT"].includes(d.data.name))
 first_children_trees.forEach((tree, i) => {
