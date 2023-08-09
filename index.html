@@ -113,7 +113,13 @@ const link = svg.append("g")
     .attr("stroke", "#aaaaaa")
     .selectAll("line")
     .data(links)
-    .join("line");
+    .join("line")
+    .attr("stroke-width", d => {
+        const num_descendents = d.target.descendants().length;
+        return Math.max(Math.log(num_descendents), 1);
+    });
+
+console.log("debug", { links})
 
  // Append nodes.
  const node = svg.append("g")
