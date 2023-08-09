@@ -107,7 +107,7 @@ const link = svg.append("g")
     .data(nodes)
     .enter()
     .append("g")
-    .call(drag(simulation));
+    .call(dragHandler(simulation));
 
 node.append("circle")
     .attr("fill", d => color_scale(d.data.publisher))
@@ -143,11 +143,13 @@ const legend = svg.append("g")
     .enter().append("g")
     .attr("transform", (d, i) => `translate(0, ${i * 20})`);
 
+// legend color blocks
 legend.append("rect")
     .attr("width", 18)
     .attr("height", 18)
     .attr("fill", color_scale);
 
+// legend text
 legend.append("text")
     .attr("x", 24)
     .attr("y", 9)
@@ -178,8 +180,7 @@ simulation.on("tick", () => {
         .attr("transform", d => `translate(${d.x},${d.y})`); // Move the entire g element to new x,y position
 });
 
-// define drag handler
-function drag(simulation) {
+function dragHandler(simulation) {
     function dragstarted(event, d) {
         if (!event.active) simulation.alphaTarget(0.3).restart();
         d.fx = d.x;
