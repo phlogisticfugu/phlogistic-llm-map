@@ -35,7 +35,7 @@
 "Alpaca","LLaMA","2023-02-27","Stanford","https://crfm.stanford.edu/2023/03/13/alpaca.html",0
 "GPT-4","GPT-3.5","2023-03-15","OpenAI","http://arxiv.org/abs/2303.08774v2",0
 "BloombergGPT","BLOOM","2023-03-30","Bloomberg","https://arxiv.org/abs/2303.17564",55
-"GPT-NeoX-20B","GPT-J","2022-04-14","Eleuther AI","https://arxiv.org/abs/2204.06745",212
+"GPT-NeoX","GPT-J","2022-04-14","Eleuther AI","https://arxiv.org/abs/2204.06745",212
 "GPT-J","GPT-3","2021-06-09","Eleuther AI","https://gpt3demo.com/apps/gpt-j-6b",0
 "Jurassic-1","GPT-3","2021-08-18","AI21","https://assets-global.website-files.com/60fd4503684b466578c0d307/61138924626a6981ee09caf6_jurassic_tech_paper.pdf",108
 "GPT-Neo","GPT-3","2021-03-01","Eleuther AI","https://github.com/EleutherAI/gpt-neo",0
@@ -60,3 +60,6 @@
 "Anthropic LM","GPT-3","2021-12-01","Anthropic","https://arxiv.org/abs/2112.00861",39
 "Claude","Anthropic LM","2023-03-14","Anthropic","https://www.anthropic.com/index/introducing-claude",0
 "Claude 2","Claude","2023-07-11","Anthropic","https://www.anthropic.com/index/claude-2",0
+"Vicuna","LLaMA","2023-03-30","LMSYS","https://lmsys.org/blog/2023-03-30-vicuna/",0
+"Falcon","GPT-3","2023-06-05","TII","https://falconllm.tii.ae/",0
+"StableLM-Alpha","GPT-NeoX","2023-04-20","Stability AI","https://stability.ai/blog/stability-ai-launches-the-first-of-its-stablelm-suite-of-language-models",0
