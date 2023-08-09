@@ -48,7 +48,12 @@ first_children_trees.forEach((tree, i) => {
     const target_y = (i + 1) * height_increment;
     tree.fy = target_y;
     tree.descendants().forEach(d => {
-        d.target_y = target_y
+        if (d.data.name.toLowerCase().startsWith("bloom")) {
+            // positioning hack
+            d.target_y = target_y + 100
+        } else {
+            d.target_y = target_y
+        }
     });
 })
 
