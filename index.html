@@ -167,7 +167,7 @@ const legend = svg.append("g")
 legend.append("rect")
     .attr("width", 18)
     .attr("height", 18)
-    .attr("fill", color_scale);
+    .attr("fill", d => color_scale(d.publisher));
 
 // legend text
 legend.append("text")
