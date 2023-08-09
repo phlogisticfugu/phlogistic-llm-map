@@ -38,6 +38,7 @@ const root = stratify(prepped_models);
 
 const nodes = root.descendants();
 const links = root.links();
+const max_depth = d3.max(nodes, d => d.depth);
 
 // fix positions to spread out the tree branches
 root.fy = height / 2;
@@ -99,7 +100,7 @@ const simulation = d3.forceSimulation(nodes)
     .force("charge", d3.forceManyBody().strength(-300))
     .force("collide", d3.forceCollide().radius(30).strength(3))
     .force("x", d3.forceX(d => scale_x(d.data.publish_date_obj)).strength(3))
-    .force("y", d3.forceY(d => !!d.target_y ? d.target_y : height / 2).strength(d => 0.03 * (10 - d.depth)));
+    .force("y", d3.forceY(d => !!d.target_y ? d.target_y : height / 2).strength(d => 0.05 * (max_depth - d.depth)));
 
 // Create the SVG container.
 const svg = d3.create("svg")
