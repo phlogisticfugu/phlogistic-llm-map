@@ -56,6 +56,16 @@ first_children_trees.forEach((tree, i) => {
         }
     });
 })
+const middle_children_trees = root.children
+    .filter(d => !["BERT", "GPT", "PaLM"].includes(d.data.name))
+middle_children_trees.forEach((tree, i) => {
+    const height_increment = 200 / (middle_children_trees.length + 1);
+    const target_y = (height / 2) - 130 + (i + 1) * height_increment;
+    tree.fy = target_y;
+    tree.descendants().forEach(d => {
+        d.target_y = target_y
+    });
+})
 
 // Declare the x (horizontal position) scale.
 const scale_x = d3.scaleUtc()
