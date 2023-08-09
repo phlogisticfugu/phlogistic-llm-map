@@ -72,7 +72,17 @@ const scale_x = d3.scaleUtc()
     .domain(d3.extent(prepped_models, d => d.publish_date_obj))
     .range([marginLeft, width - marginRight]);
 
-const publishers = Array.from(new Set(prepped_models.map(d => d.publisher)));
+const _publishers = Array.from(new Set(prepped_models.map(d => d.publisher)));
+const publishers_with_num_models = _publishers
+    .map(publisher => {
+        const num_models = prepped_models.filter(d => d.publisher === publisher).length;
+        return {
+            publisher,
+            num_models
+        }
+    })
+    .sort((a, b) => b.num_models - a.num_models);
+const publishers = publishers_with_num_models.map(d => d.publisher);
 const color_scale = d3.scaleOrdinal(d3.schemeTableau10).domain(publishers); 
 const publisher_css_class_map = {};
 publishers.forEach((publisher) => {
@@ -144,7 +154,7 @@ const legend = svg.append("g")
     .attr("class", "legend")
     .attr("transform", `translate(${marginLeft}, ${marginTop})`)  // Moved to upper left
     .selectAll("g")
-    .data(publishers)
+    .data(publishers_with_num_models)
     .enter().append("g")
     .attr("transform", (d, i) => `translate(0, ${i * 20})`);
 
@@ -160,13 +170,21 @@ legend.append("text")
     .attr("y", 9)
     .attr("class", "legend-text")
     .attr("dy", "0.35em")
-    .text(d => d)
+    .text(d => {
+        const publisher = d.publisher;
+        const num_models = d.num_models;
+        if (num_models > 1) {
+            return `${publisher} (${num_models})`
+        } else {
+            return publisher
+        }
+    })
     .on("mouseover", function(_, d) {
-        svg.selectAll(`.node-text.${publisher_css_class_map[d]}`)
+        svg.selectAll(`.node-text.${publisher_css_class_map[d.publisher]}`)
             .style("font-weight", "bold");
     })
     .on("mouseout", function(_, d) {
-        svg.selectAll(`.node-text.${publisher_css_class_map[d]}`)
+        svg.selectAll(`.node-text.${publisher_css_class_map[d.publisher]}`)
             .style("font-weight", "normal");
     });
 
