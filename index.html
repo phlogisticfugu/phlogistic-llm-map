@@ -79,6 +79,11 @@ publishers.forEach((publisher) => {
     publisher_css_class_map[publisher] = publisher.replace(/\W+/g, "-").toLowerCase()
 });
 
+const years = d3.range(
+    d3.min(prepped_models, d => d.publish_date_obj).getFullYear(),
+    d3.max(prepped_models, d => d.publish_date_obj).getFullYear() + 1
+);
+
 const simulation = d3.forceSimulation(nodes)
     .force("link", d3.forceLink(links).id((d) => d.name).distance(30).strength(0.3))
     .force("charge", d3.forceManyBody().strength(-300))
@@ -164,6 +169,18 @@ legend.append("text")
         svg.selectAll(`.node-text.${publisher_css_class_map[d]}`)
             .style("font-weight", "normal");
     });
+
+const verticalLines = svg.append("g")
+    .attr("class", "vertical-lines");
+years.forEach(year => {
+    verticalLines.append("line")
+        .attr("x1", scale_x(new Date(year, 0, 1)))
+        .attr("y1", marginTop)
+        .attr("x2", scale_x(new Date(year, 0, 1)))
+        .attr("y2", height - marginBottom)
+        .attr("stroke", "#c9c9c9")
+        .attr("stroke-dasharray", "2,2");
+});
 
 simulation.on("tick", () => {
     link
