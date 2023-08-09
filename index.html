@@ -130,7 +130,9 @@ node.append("a")
 // Add the x-axis.
 svg.append("g")
     .attr("transform", `translate(0,${height - marginBottom})`)
-    .call(d3.axisBottom(scale_x));
+    .call(d3.axisBottom(scale_x))
+    .selectAll("text")
+    .style("font-size", "22px");
 
 // Add a legend
 const legend = svg.append("g")
