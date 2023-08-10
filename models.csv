@@ -63,3 +63,5 @@
 "Claude 2","Claude","2023-07-11","Anthropic","https://www.anthropic.com/index/claude-2",0
 "Vicuna","LLaMA","2023-03-30","LMSYS","https://lmsys.org/blog/2023-03-30-vicuna/",0
 "StableLM-Alpha","GPT-NeoX","2023-04-20","Stability AI","https://stability.ai/blog/stability-ai-launches-the-first-of-its-stablelm-suite-of-language-models",0
+"MPT-7B","GPT-3","2023-05-05","MosaicML","https://www.mosaicml.com/blog/mpt-7b",0
+"MPT-30B","MPT-7B","2023-06-22","MosaicML","https://www.mosaicml.com/blog/mpt-30b",0
