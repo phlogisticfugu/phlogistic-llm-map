@@ -5,7 +5,13 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div id="container"></div>
+        <div id="container">
+            <img
+                src="phlogstic-llm-map-fallback.png"
+                style="width:100%;height:100%"
+                class="img-fallback"
+            />
+        </div>
 <script type="module">
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 const container = d3.select("#container");
@@ -93,13 +99,14 @@ publishers.forEach((publisher) => {
 const years = d3.range(
     d3.min(prepped_models, d => d.publish_date_obj).getFullYear(),
     d3.max(prepped_models, d => d.publish_date_obj).getFullYear() + 1
-);
+)
+.filter(y => y > 2018);
 
 const simulation = d3.forceSimulation(nodes)
     .force("link", d3.forceLink(links).id((d) => d.name).distance(30).strength(0.3))
     .force("charge", d3.forceManyBody().strength(-300))
     .force("collide", d3.forceCollide().radius(32).strength(3))
-    .force("x", d3.forceX(d => scale_x(d.data.publish_date_obj)).strength(3))
+    .force("x", d3.forceX(d => scale_x(d.data.publish_date_obj)).strength(10))
     .force("y", d3.forceY(d => !!d.target_y ? d.target_y : height / 2).strength(d => 0.05 * (max_depth + 1 - d.depth)));
 
 // Create the SVG container.
@@ -205,6 +212,25 @@ years.forEach(year => {
         .attr("stroke-dasharray", "2,2");
 });
 
+const descriptionBoxWidth = 420;
+const descriptionBoxHeight = 50;
+
+const descriptionBox = svg.append("g")
+    .attr("transform", `translate(${marginLeft}, ${height - marginBottom - descriptionBoxHeight})`);
+
+descriptionBox.append("rect")
+    .attr("width", descriptionBoxWidth)
+    .attr("height", descriptionBoxHeight)
+    .attr("fill", "#fff");
+
+descriptionBox.append("text")
+    .attr("x", 15)
+    .attr("y", 20)
+    .attr("class", "text-box")
+    .attr("dy", "0.35em")
+    .style("font-size", "18px") // Set the font size of the text
+    .text("https://github.com/phlogisticfugu/phlogistic-llm-map");
+
 simulation.on("tick", () => {
     link
         .attr("x1", d => d.source.x)
@@ -276,6 +302,9 @@ function handleMouseOut() {
 
 container
     .append(() => svg.node());
+
+container
+    .selectAll(".img-fallback").style("display", "none");
 
 </script>
     </body>
