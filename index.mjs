@@ -15,9 +15,9 @@ const prepped_models = models
     .map(d => {
         d.publish_date_obj = new Date(d.publish_date);
         if (d.num_citations > 0) {
-            d.radius = Math.max(3, Math.sqrt(4 * Math.log(d.num_citations)))
+            d.radius = Math.max(4, Math.sqrt(5 * Math.log(d.num_citations)))
         } else {
-            d.radius = 2
+            d.radius = 3
         }
         return d
     });
@@ -125,6 +125,8 @@ const link = svg.append("g")
 node.append("circle")
     .attr("fill", d => color_scale(d.data.publisher))
     .attr("r", d => d.data.radius)
+    .attr("stroke", d => d.data.is_free_commercial_use === "Y" ? "#444444" : "none")
+    .attr("stroke-width", "3")
     .on("mouseover", handleMouseOver)
     .on("mouseout", handleMouseOut);
 
@@ -276,6 +278,9 @@ function handleMouseOver(event, d) {
     content_html += `<p>Google Scholar Citations: ${d.data.num_citations}</p>`
   } else {
     content_html += "<p>No Preprint Paper</p>"
+  }
+  if (d.data.is_free_commercial_use === "Y") {
+    content_html += "<p>Free for commercial use</p>"
   }
   tooltip.html(content_html);
 }
