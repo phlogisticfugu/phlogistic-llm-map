@@ -12,12 +12,12 @@
 "UniLMv2","UniLM","2020-02-28","Microsoft","https://arxiv.org/abs/2002.12804",299
 "ELECTRA","RoBERTa","2020-03-23","Google","https://arxiv.org/abs/2003.10555",2722
 "AlexaTM","BERT","2022-08-02","Amazon","https://arxiv.org/abs/2208.01448",31
-"RoBERTa","BERT","2019-07-26","Facebook","https://arxiv.org/abs/1907.11692",187
+"RoBERTa","BERT","2019-07-26","Meta","https://arxiv.org/abs/1907.11692",187
 "T5","BERT","2019-10-23","Google","https://arxiv.org/abs/1910.10683",9217
 "Switch Transformer","Transformer","2021-01-11","Google","https://arxiv.org/abs/2101.03961",812
 "ST-MoE","Switch Transformer","2022-02-17","Google","https://arxiv.org/abs/2202.08906",12
 "DeBERTa","RoBERTa","2020-06-05","Microsoft","https://arxiv.org/abs/2006.03654",1172
-"BART","BERT","2019-10-29","Facebook","https://arxiv.org/abs/1910.13461",6118
+"BART","BERT","2019-10-29","Meta","https://arxiv.org/abs/1910.13461",6118
 "GPT-2","GPT","2019-02-14","OpenAI","https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",6346
 "GPT-3","GPT-2","2020-05-28","OpenAI","https://arxiv.org/abs/2005.14165",12900
 "GPT-J","GPT-3","2021-06-09","Eleuther AI","https://gpt3demo.com/apps/gpt-j-6b",0
@@ -25,7 +25,7 @@
 "Codex","GPT-3","2021-08-10","OpenAI","https://openai.com/blog/openai-codex",0
 "GPT-3.5","GPT-3","2022-03-15","OpenAI","https://openai.com/blog/gpt-3-edit-insert/",0
 "Gopher","GPT-3","2021-12-08","Google","http://arxiv.org/abs/2112.11446v2",414
-"OPT","GPT-3","2022-05-02","Facebook","https://arxiv.org/abs/2205.01068",574
+"OPT","GPT-3","2022-05-02","Meta","https://arxiv.org/abs/2205.01068",574
 "GLM","PaLM","2022-10-05","Zhipu AI","https://arxiv.org/abs/2210.02414",40
 "BLOOM","GPT","2022-11-09","BigScience Workshop","https://arxiv.org/abs/2211.05100",338
 "MT-NLG","GPT-3","2022-01-28","Microsoft","https://arxiv.org/abs/2201.11990",281
@@ -40,7 +40,7 @@
 "GPT-Neo","GPT-3","2021-03-01","Eleuther AI","https://github.com/EleutherAI/gpt-neo",0
 "PaLM 2","PaLM","2023-05-17","Google","https://arxiv.org/abs/2305.10403",63
 "Jurassic-2","Jurassic-1","2023-03-09","AI21","https://docs.ai21.com/docs/jurassic-2-models",0
-"LLaMA 2","LLaMA","2023-07-18","Facebook","https://arxiv.org/abs/2307.09288",10
+"LLaMA 2","LLaMA","2023-07-18","Meta","https://arxiv.org/abs/2307.09288",10
 "Dolly","GPT-J","2023-03-24","Databricks","https://www.databricks.com/blog/2023/03/24/hello-dolly-democratizing-magic-chatgpt-open-models.html",10
 "Pythia","GPT-3","2023-04-03","Eleuther AI","https://arxiv.org/abs/2304.01373",46
 "Dolly 2.0","Pythia","2023-04-12","Databricks","https://www.databricks.com/blog/2023/04/12/dolly-first-open-commercially-viable-instruction-tuned-llm",0
@@ -50,14 +50,14 @@
 "Tk-Instruct","T5","2022-04-16","Various","https://arxiv.org/abs/2204.07705",75
 "PanGu-α","Transformer","2021-04-26","PCNL","https://arxiv.org/abs/2104.12369",127
 "UL2","T5","2022-05-10","Google","https://arxiv.org/abs/2205.05131",26
-"NLLB","Transformer","2022-07-11","Facebook","https://arxiv.org/abs/2207.04672",116
+"NLLB","Transformer","2022-07-11","Meta","https://arxiv.org/abs/2207.04672",116
 "Flan-T5","T5","2022-10-20","Google","https://arxiv.org/abs/2210.11416",359
 "Flan-PaLM","PaLM","2022-10-20","Google","https://arxiv.org/abs/2210.11416",359
 "BLOOMZ","BLOOM","2022-11-03","Various","https://arxiv.org/abs/2211.01786",65
 "mT0","mT5","2022-11-03","Various","https://arxiv.org/abs/2211.01786",65
 "FLAN","GPT-3","2021-09-03","Google","https://arxiv.org/abs/2109.01652",719
 "Anthropic LM","GPT-3","2021-12-01","Anthropic","https://arxiv.org/abs/2112.00861",39
-"LLaMA","GPT-3","2023-02-27","Facebook","https://arxiv.org/abs/2302.13971v1",742
+"LLaMA","GPT-3","2023-02-27","Meta","https://arxiv.org/abs/2302.13971v1",742
 "Falcon","GPT-3","2023-06-05","TII","https://falconllm.tii.ae/",0
 "Claude","Anthropic LM","2023-03-14","Anthropic","https://www.anthropic.com/index/introducing-claude",0
 "Claude 2","Claude","2023-07-11","Anthropic","https://www.anthropic.com/index/claude-2",0
