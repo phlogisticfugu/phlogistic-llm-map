@@ -212,6 +212,25 @@ years.forEach(year => {
         .attr("stroke-dasharray", "2,2");
 });
 
+const descriptionBoxWidth = 420;
+const descriptionBoxHeight = 50;
+
+const descriptionBox = svg.append("g")
+    .attr("transform", `translate(${marginLeft}, ${height - marginBottom - descriptionBoxHeight})`);
+
+descriptionBox.append("rect")
+    .attr("width", descriptionBoxWidth)
+    .attr("height", descriptionBoxHeight)
+    .attr("fill", "#fff");
+
+descriptionBox.append("text")
+    .attr("x", 15)
+    .attr("y", 20)
+    .attr("class", "text-box")
+    .attr("dy", "0.35em")
+    .style("font-size", "18px") // Set the font size of the text
+    .text("https://github.com/phlogisticfugu/phlogistic-llm-map");
+
 simulation.on("tick", () => {
     link
         .attr("x1", d => d.source.x)
