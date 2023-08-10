@@ -99,7 +99,7 @@ const simulation = d3.forceSimulation(nodes)
     .force("link", d3.forceLink(links).id((d) => d.name).distance(30).strength(0.3))
     .force("charge", d3.forceManyBody().strength(-300))
     .force("collide", d3.forceCollide().radius(30).strength(3))
-    .force("x", d3.forceX(d => scale_x(d.data.publish_date_obj)).strength(3))
+    .force("x", d3.forceX(d => scale_x(d.data.publish_date_obj)).strength(10))
     .force("y", d3.forceY(d => !!d.target_y ? d.target_y : height / 2).strength(d => 0.05 * (max_depth + 1 - d.depth)));
 
 // Create the SVG container.
