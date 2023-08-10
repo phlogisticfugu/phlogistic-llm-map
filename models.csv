@@ -36,15 +36,15 @@
 "GPT-4","GPT-3.5","2023-03-15","OpenAI","http://arxiv.org/abs/2303.08774v2",0
 "BloombergGPT","BLOOM","2023-03-30","Bloomberg","https://arxiv.org/abs/2303.17564",55
 "GPT-NeoX","GPT-J","2022-04-14","Eleuther AI","https://arxiv.org/abs/2204.06745",212,"Y"
-"Jurassic-1","GPT-3","2021-08-18","AI21","https://assets-global.website-files.com/60fd4503684b466578c0d307/61138924626a6981ee09caf6_jurassic_tech_paper.pdf",108
+"Jurassic-1","GPT-3","2021-08-18","AI21","https://assets-global.website-files.com/60fd4503684b466578c0d307/61138924626a6981ee09caf6_jurassic_tech_paper.pdf",108,"Y"
 "GPT-Neo","GPT-3","2021-03-01","Eleuther AI","https://github.com/EleutherAI/gpt-neo",0
 "PaLM 2","PaLM","2023-05-17","Google","https://arxiv.org/abs/2305.10403",63
-"Jurassic-2","Jurassic-1","2023-03-09","AI21","https://docs.ai21.com/docs/jurassic-2-models",0
+"Jurassic-2","Jurassic-1","2023-03-09","AI21","https://docs.ai21.com/docs/jurassic-2-models",0,"Y"
 "LLaMA 2","LLaMA","2023-07-18","Meta","https://arxiv.org/abs/2307.09288",10
 "Dolly","GPT-J","2023-03-24","Databricks","https://www.databricks.com/blog/2023/03/24/hello-dolly-democratizing-magic-chatgpt-open-models.html",10,"Y"
 "Pythia","GPT-3","2023-04-03","Eleuther AI","https://arxiv.org/abs/2304.01373",46,"Y"
 "Dolly 2.0","Pythia","2023-04-12","Databricks","https://www.databricks.com/blog/2023/04/12/dolly-first-open-commercially-viable-instruction-tuned-llm",0,"Y"
-"mT5","T5","2020-10-22","Google","https://arxiv.org/abs/2010.11934",1100
+"mT5","T5","2020-10-22","Google","https://arxiv.org/abs/2010.11934",1100,"Y"
 "T0","T5","2021-10-15","Various","https://arxiv.org/abs/2110.08207",591
 "CodeGen","GPT-J","2022-03-25","Salesforce","https://arxiv.org/abs/2203.13474",103
 "Tk-Instruct","T5","2022-04-16","Various","https://arxiv.org/abs/2204.07705",75
@@ -53,15 +53,15 @@
 "NLLB","Transformer","2022-07-11","Meta","https://arxiv.org/abs/2207.04672",116
 "Flan-T5","T5","2022-10-20","Google","https://arxiv.org/abs/2210.11416",359,"Y"
 "Flan-PaLM","PaLM","2022-10-20","Google","https://arxiv.org/abs/2210.11416",359,"Y"
-"BLOOMZ","BLOOM","2022-11-03","Various","https://arxiv.org/abs/2211.01786",65
-"mT0","mT5","2022-11-03","Various","https://arxiv.org/abs/2211.01786",65
-"FLAN","GPT-3","2021-09-03","Google","https://arxiv.org/abs/2109.01652",719
+"BLOOMZ","BLOOM","2022-11-03","Various","https://arxiv.org/abs/2211.01786",65,"Y"
+"mT0","mT5","2022-11-03","Various","https://arxiv.org/abs/2211.01786",65,"Y"
+"FLAN","GPT-3","2021-09-03","Google","https://arxiv.org/abs/2109.01652",719,"Y"
 "Anthropic LM","GPT-3","2021-12-01","Anthropic","https://arxiv.org/abs/2112.00861",39
 "LLaMA","GPT-3","2023-02-27","Meta","https://arxiv.org/abs/2302.13971v1",742
 "Falcon","GPT-3","2023-06-05","TII","https://falconllm.tii.ae/",0,"Y"
 "Claude","Anthropic LM","2023-03-14","Anthropic","https://www.anthropic.com/index/introducing-claude",0
 "Claude 2","Claude","2023-07-11","Anthropic","https://www.anthropic.com/index/claude-2",0
-"Vicuna","LLaMA","2023-03-30","LMSYS","https://lmsys.org/blog/2023-03-30-vicuna/",0
+"Vicuna","LLaMA","2023-03-30","LMSYS","https://lmsys.org/blog/2023-03-30-vicuna/",0,"Y"
 "StableLM-Alpha","GPT-NeoX","2023-04-20","Stability AI","https://stability.ai/blog/stability-ai-launches-the-first-of-its-stablelm-suite-of-language-models",0,"Y"
 "MPT-7B","GPT-3","2023-05-05","MosaicML","https://www.mosaicml.com/blog/mpt-7b",0,"Y"
 "MPT-30B","MPT-7B","2023-06-22","MosaicML","https://www.mosaicml.com/blog/mpt-30b",0,"Y"
