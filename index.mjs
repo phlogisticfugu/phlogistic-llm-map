@@ -32,17 +32,18 @@ const links = root.links();
 const max_depth = d3.max(nodes, d => d.depth);
 
 // fix positions to spread out the tree branches
-root.fy = (height / 2) + 100;
+const root_y = (height / 2) + 120;
+root.fy = root_y;
 const first_children_trees = root.children
     .filter(d => ["BERT", "GPT"].includes(d.data.name))
 first_children_trees.forEach((tree, i) => {
     const height_increment = height / (first_children_trees.length + 1);
-    const target_y = (i + 1) * height_increment;
+    const target_y = 45 + (i + 1) * height_increment;
     tree.fy = target_y;
     tree.descendants().forEach(d => {
         if (d.data.name.toLowerCase().startsWith("bloom")) {
             // positioning hack
-            d.target_y = target_y + 120
+            d.target_y = target_y + 170
         } else {
             d.target_y = target_y
         }
@@ -52,7 +53,7 @@ const middle_children_trees = root.children
     .filter(d => !["BERT", "GPT", "PaLM"].includes(d.data.name))
 middle_children_trees.forEach((tree, i) => {
     const height_increment = 200 / (middle_children_trees.length + 1);
-    const target_y = (height / 2) - 130 + (i + 1) * height_increment;
+    const target_y = root_y + (i + 1) * height_increment;
     tree.fy = target_y;
     tree.descendants().forEach(d => {
         d.target_y = target_y
