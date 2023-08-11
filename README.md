@@ -19,6 +19,4 @@ This space is moving quickly, so not all papers have been published in a peer-re
 
 created by Brad Ito
 - CTO and Co-Founder, Retina AI
-- https://www.linkedin.com/in/brad-ito/
-- https://github.com/phlogisticfugu/
-- https://twitter.com/phlogisticfugu
+- https://bradito.me/
