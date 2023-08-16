@@ -65,3 +65,4 @@
 "StableLM-Alpha","GPT-NeoX","2023-04-20","Stability AI","https://stability.ai/blog/stability-ai-launches-the-first-of-its-stablelm-suite-of-language-models",0,"Y"
 "MPT-7B","GPT-3","2023-05-05","MosaicML","https://www.mosaicml.com/blog/mpt-7b",0,"Y"
 "MPT-30B","MPT-7B","2023-06-22","MosaicML","https://www.mosaicml.com/blog/mpt-30b",0,"Y"
+"XGen","LLaMA","2023-07-02","Salesforce","https://blog.salesforceairesearch.com/xgen/",0,"Y"
