@@ -4,7 +4,7 @@
 "PaLM","Transformer","2022-04-05","Google","https://arxiv.org/abs/2204.02311",1263,"N"
 "BERT","Transformer","2018-10-11","Google","https://arxiv.org/abs/1810.04805",74143,"Y"
 "DistilBERT","BERT","2019-10-02","Hugging Face","https://arxiv.org/abs/1910.01108",4045,"Y"
-"ERNIE","BERT","2019-05-17","Tsinghua University","https://arxiv.org/abs/1905.07129",1186,"Y"
+"ERNIE","BERT","2019-04-19","Baidu","https://arxiv.org/abs/1904.09223",821,"Y"
 "ERNIE 2.0","ERNIE","2020-04-03","Baidu","https://ojs.aaai.org/index.php/AAAI/article/view/6428",633,"N"
 "ERNIE 3.0","ERNIE 2.0","2021-07-05","Baidu","https://arxiv.org/abs/2107.02137",169,"N"
 "ALBERT","BERT","2019-09-01","Google","https://arxiv.org/abs/1909.11942",5288,"Y"
