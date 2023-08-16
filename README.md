@@ -2,6 +2,8 @@
 
 see [blog post](https://bradito.me/blog/llm-map/) for more on why I made this.
 
+![phlogistic-llm-map.png](./phlogistic-llm-map.png)
+
 ### Data-driven visualization of major Large Language Models (LLMs):
 - continuously update-able models (because new ones are being created all the time. contributions welcome)
 - links to source information about models
